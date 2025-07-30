@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Animated Section Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Place your animated section here -->
+    <section id="animated-section" style="
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 1rem;
+      max-width: 1000px;
+      margin: 100vh auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    ">
+
+      <h3 style="
+        font-size: 1.4rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #a445b2, #ff0069);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+      " class="fade-in">
+        Our Secret Sauce?
+      </h3>
+
+      <h1 style="
+        font-size: 2.4rem;
+        font-weight: 900;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+      " class="fade-in" data-delay="0.2s">
+        Patent-pending growth technology<span style="color:#6c5ce7;">*</span><br/>
+        <span style="
+          display: block;
+          font-size: 1.5rem;
+          font-weight: 800;
+          margin-top: 0.4rem;
+        ">
+          No spam. No bots. No illegal tactics.
+        </span>
+      </h1>
+
+      <p style="
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #222;
+        margin: 2rem 0 3rem;
+        max-width: 700px;
+      " class="fade-in" data-delay="0.4s">
+        We've developed our growth engine by training ML & deep learning models.<br/>
+        Our secret sauce is a combination of 
+        <a href="#" style="color:#e1306c;text-decoration:underline;font-weight:500;">paid advertising</a>, 
+        <a href="#" style="color:#e1306c;text-decoration:underline;font-weight:500;">nano-interactions</a>, 
+        <a href="#" style="color:#e1306c;text-decoration:underline;font-weight:500;">niche data clusters</a> and 
+        <a href="#" style="color:#e1306c;text-decoration:underline;font-weight:500;">real-human activity</a>.<br/>
+        Compared to other growth services, we attract more real, organic users interested in your account, 
+        without ever putting your account at any risk of getting banned or flagged.
+      </p>
+
+      <button style="
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
+        background: linear-gradient(90deg, #a445b2, #ff0069, #ff9900);
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 40px;
+        cursor: pointer;
+        box-shadow: 0 0 30px rgba(255, 0, 140, 0.4),
+                    0 0 60px rgba(0, 255, 170, 0.2);
+        transition: transform 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      " class="fade-in" data-delay="0.6s"
+      onmouseover="this.style.transform='translateY(-4px)'"
+      onmouseout="this.style.transform='none'">
+        <i style="font-style: normal;">📷</i> Get Started
+      </button>
+
+      <style>
+        .fade-in {
+          opacity: 0;
+          transform: translateY(40px);
+          transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .fade-in.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      </style>
+
+      <script>
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+          const delay = el.getAttribute('data-delay') || '0s';
+          el.style.transitionDelay = delay;
+          observer.observe(el);
+        });
+      </script>
+    </section>
+
+  </body>
+</html>
